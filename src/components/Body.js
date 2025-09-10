@@ -66,7 +66,7 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
-      <div className="md:pt-38 pt-[100px] flex justify-between items-center font-poppins">
+      <div className="md:pt-[160px] pt-[100px] flex justify-between items-center font-poppins">
         <div className="flex grow justify-center ">
           <input
             className="md:text-base text-[14px] border-1 my-2 px-2.5 py-1 h-13 rounded-lg bg-cyan-200 dark:bg-cyan-700 md:w-2/4 w-full "

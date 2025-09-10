@@ -1,6 +1,6 @@
 const MenuShimmer = () => {
   return (
-    <div className="md:pt-38 pt-[90px] my-5 md:mx-[90px]">
+    <div className="md:pt-[160px] pt-[90px] my-5 md:mx-[90px]">
       <div className="bg-cyan-300 dark:bg-cyan-800 z-0 md:h-[280px] h-[200px] relative flex justify-center md:mx-[150px] font-poppins  font-bold rounded-lg">
         <h3 className="my-auto">Loading.....</h3>
       </div>

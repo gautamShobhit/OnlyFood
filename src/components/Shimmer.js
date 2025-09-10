@@ -1,7 +1,7 @@
 const Shimmer = () => {
   return (
     //create some fake cards
-    <div className="md:pt-38 pt-[100px] flex flex-wrap justify-centre">
+    <div className="md:pt-[160px] pt-[100px] flex flex-wrap justify-centre">
       <div className="font-bold flex justify-center items-center my-2 px-2.5 py-1 h-13 rounded-lg bg-cyan-300 dark:bg-cyan-800 grow font-poppins ">
         <h3>Loading....</h3>
       </div>

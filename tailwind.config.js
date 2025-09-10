@@ -14,10 +14,10 @@ module.exports = {
         },
         white: "#FFFFFF",
       },
-    },
-    fontFamily: {
-      roboto: ["Roboto", "sans-serif"],
-      poppins: ["Poppins", "sans-serif"],
+      fontFamily: {
+        roboto: ["Roboto", "sans-serif"],
+        poppins: ["Poppins", "sans-serif"],
+      },
     },
   },
   plugins: [],

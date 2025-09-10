@@ -8,7 +8,7 @@ const FavRes = () => {
       You don't have any favourites yet 🙄 !!
     </h1>
   ) : (
-    <div className="md:pt-38 pt-[100px] flex flex-wrap justify-center">
+    <div className="md:pt-[160px] pt-[100px] flex flex-wrap justify-center">
       {favItems.map((favItem) => (
         //<Link to={"/restaurant/" + favItem?.info.id}>
         <div

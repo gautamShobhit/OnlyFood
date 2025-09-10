@@ -32,7 +32,7 @@ const Cart = () => {
       Hmm... 😖 Nothing in your cart yet. Please Add Items to your Cart first !!
     </h1>
   ) : (
-    <div className="md:pt-38 pt-[100px] md:w-8/12 m-auto font-poppins ">
+    <div className="md:pt-[160px] pt-[100px] md:w-8/12 m-auto font-poppins ">
       <div className="flex my-5 justify-between">
         <div className="m-2.5 md:text-xl font-semibold">Cart 🛒</div>
         <button
