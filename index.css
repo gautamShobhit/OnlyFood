@@ -1,0 +1,12 @@
+/* Google Fonts must come FIRST */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+/* Then Tailwind */
+@import "tailwindcss";
+
+/* Then custom theme */
+@theme {
+  --font-roboto: "Roboto", sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+}
