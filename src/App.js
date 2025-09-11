@@ -26,10 +26,8 @@ const AppLayout = () => {
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark"); // adds to <html>
-      console.log("dark theme applied");
     } else {
       document.documentElement.classList.remove("dark");
-      console.log("light theme applied");
     }
   }, [darkMode]);
   return (

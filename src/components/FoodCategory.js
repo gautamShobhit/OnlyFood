@@ -14,7 +14,7 @@ const FoodCategory = ({ index, data, showItems, setShowIndex }) => {
 
   return (
     <div>
-      <div className="my-2.5 p-2 shadow-2xl dark:shadow-gray-400 border-b-1 rounded-lg bg-cyan-300 dark:bg-gray-800 ">
+      <div className="my-2.5 p-2 shadow-2xl dark:shadow-gray-400 border-black dark:border-white border-b rounded-lg bg-cyan-300 dark:bg-gray-800 ">
         {/* {Header} */}
         <div
           className="flex justify-between font-semibold cursor-pointer md:text-base text-sm"

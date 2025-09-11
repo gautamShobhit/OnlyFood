@@ -13,7 +13,7 @@ const FavRes = () => {
         //<Link to={"/restaurant/" + favItem?.info.id}>
         <div
           key={favItem?.info.id}
-          className="flex w-[420px] flex-wrap m-[15px] p-2 border-b-1 md:shadow-2xl shadow-lg dark:shadow-gray-400 rounded-lg font-poppins  transition-all duration-300 delay-100 ease-in-out hover:cursor-pointer bg-cyan-100 dark:bg-gray-800 hover:scale-105"
+          className="flex w-[420px] flex-wrap m-[15px] p-2 border-black dark:border-white border-b md:shadow-2xl shadow-lg dark:shadow-gray-400 rounded-lg font-poppins  transition-all duration-300 delay-100 ease-in-out hover:cursor-pointer bg-cyan-100 dark:bg-gray-800 hover:scale-105"
         >
           <div className="w-5/12">
             <img

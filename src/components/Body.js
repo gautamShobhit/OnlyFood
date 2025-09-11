@@ -69,7 +69,7 @@ const Body = () => {
       <div className="md:pt-[160px] pt-[100px] flex justify-between items-center font-poppins">
         <div className="flex grow justify-center ">
           <input
-            className="md:text-base text-[14px] border-1 my-2 px-2.5 py-1 h-13 rounded-lg bg-cyan-200 dark:bg-cyan-700 md:w-2/4 w-full "
+            className="h-10 md:text-base text-[11px] border-black border-b dark:border-white my-2 px-2.5 py-1 h-13 rounded-lg md:shadow-xl shadow-lg dark:shadow-gray-500 bg-white dark:bg-cyan-700 md:w-2/4 w-full "
             type="text"
             //used to provide a test Id in order to fetch this input while testing
             data-testid="searchInput"
@@ -86,7 +86,7 @@ const Body = () => {
             }}
           />
           <button
-            className="px-2.5 m-2 border-b-1 md:shadow-xl shadow-lg dark:shadow-gray-500 rounded-xl h-13  bg-white dark:bg-gray-400 transition-all ease-in-out duration-200 hover:scale-85"
+            className="px-2.5 m-2 border-black dark:border-white border-b md:shadow-xl shadow-lg dark:shadow-gray-500 rounded-xl bg-white dark:bg-gray-400 transition-all ease-in-out duration-200 hover:scale-110 hover:-translate-y-1"
             onClick={() => {
               onSearch(searchText);
             }}
@@ -95,7 +95,7 @@ const Body = () => {
           </button>
           <button
             data-testid="filterBtn"
-            className="px-2.5 my-2 border-b-1 md:shadow-xl shadow-lg dark:shadow-gray-500 rounded-xl h-13 bg-white dark:bg-gray-400  transition-all ease-in-out duration-200 hover:scale-85"
+            className="px-2.5 my-2 border-black dark:border-white border-b md:shadow-xl shadow-lg dark:shadow-gray-500 rounded-xl bg-white dark:bg-gray-400  transition-all ease-in-out duration-200 hover:scale-110 hover:-translate-y-1"
             onClick={() => {
               //now filter shows the best out searched
               const filteredList = dummyResList.filter(
@@ -109,7 +109,7 @@ const Body = () => {
             <img className="w-5" src={filterIcon}></img>
           </button>
           <button
-            className="px-2.5 my-2 ml-2 border-b-1 md:shadow-xl shadow-lg dark:shadow-gray-500 rounded-xl h-13 bg-white dark:bg-gray-400  transition-all ease-in-out duration-200 hover:scale-85"
+            className="px-2.5 my-2 ml-2 border-black dark:border-white border-b md:shadow-xl shadow-lg dark:shadow-gray-500 rounded-xl bg-white dark:bg-gray-400  transition-all ease-in-out duration-200 hover:scale-110 hover:-translate-y-1"
             onClick={() => {
               setDummyResList(newResList);
               setSearchText("");

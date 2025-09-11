@@ -26,7 +26,7 @@ const Header = () => {
     setIsShowMore(!isShowMore);
   };
   return (
-    <div className="md:text-base text-xs left-1/2 -translate-x-1/2 fixed top-1 backdrop-blur-sm shadow-lg dark:shadow-gray-500 z-50 flex md:w-[99%] w-[99%] justify-between border-b-1 rounded-lg items-center bg-cyan-500/40 font-poppins  ">
+    <div className="md:text-base text-xs left-1/2 -translate-x-1/2 fixed top-1 backdrop-blur-sm shadow-lg dark:shadow-gray-500 z-50 flex md:w-[99%] w-[99%] justify-between border-black dark:border-white border-b rounded-lg items-center bg-cyan-500/40 font-poppins  ">
       <div className="logo-container">
         <Link to="/">
           <img
@@ -38,25 +38,25 @@ const Header = () => {
       </div>
       <div className="font-semibold ">
         <ul className="flex ">
-          <li className="hidden md:block md:p-3 md:m-[15px]  border-1 rounded-2xl bg-white dark:bg-black md:text-base text-[10px]">
+          <li className="hidden md:block md:p-3 md:m-[15px]  border-black border dark:border-white rounded-2xl bg-white dark:bg-black md:text-base text-[10px]">
             Online Status :{onlineStatus ? "🟢" : "🔴"}
           </li>
-          <li className="md:p-3 p-2 md:m-[15px] mr-2 border-1 rounded-2xl bg-white dark:bg-black md:text-base text-[10px] transition-all ease-in-out duration-300 hover:scale-90">
+          <li className="md:p-3 p-2 md:m-[15px] mr-2 border-black border dark:border-white rounded-2xl bg-white dark:bg-black md:text-base text-[10px] transition-all ease-in-out duration-300 hover:scale-90">
             <Link to="/">Home 🏠</Link>
           </li>
-          <li className="hidden md:block md:p-3 md:m-[15px] border-1 rounded-2xl bg-white dark:bg-black md:text-base text-[12px] transition-all ease-in-out duration-300 hover:scale-90">
+          <li className="hidden md:block md:p-3 md:m-[15px] border-black border dark:border-white rounded-2xl bg-white dark:bg-black md:text-base text-[12px] transition-all ease-in-out duration-300 hover:scale-90">
             <Link to="/about">About Us 👤</Link>
           </li>
-          <li className="hidden md:block md:p-3 md:m-[15px] border-1 rounded-2xl bg-white dark:bg-black md:text-base text-[12px] transition-all ease-in-out duration-300 hover:scale-90">
+          <li className="hidden md:block md:p-3 md:m-[15px] border-black border dark:border-white rounded-2xl bg-white dark:bg-black md:text-base text-[12px] transition-all ease-in-out duration-300 hover:scale-90">
             <Link to="/contact">Contact Us ☎️</Link>
           </li>
-          <li className="md:p-3 p-2 md:m-[15px] mr-2 border-1 rounded-2xl bg-white dark:bg-black md:text-base text-[10px] transition-all ease-in-out duration-300 hover:scale-90">
+          <li className="md:p-3 p-2 md:m-[15px] mr-2 border-black border dark:border-white rounded-2xl bg-white dark:bg-black md:text-base text-[10px] transition-all ease-in-out duration-300 hover:scale-90">
             <Link to="/favourites">Favourites 🩷 - ({favItems.length})</Link>
           </li>
-          <li className="md:p-3 p-2 md:m-[15px]  border-1 rounded-2xl bg-white dark:bg-black md:text-base text-[10px] transition-all ease-in-out duration-300 hover:scale-90">
+          <li className="md:p-3 p-2 md:m-[15px]  border-black border dark:border-white rounded-2xl bg-white dark:bg-black md:text-base text-[10px] transition-all ease-in-out duration-300 hover:scale-90">
             <Link to="/cart">Cart 🛒 - ({cartItems.length})</Link>
           </li>
-          <div className="absolute right-0 top-0 md:-mr-0 -mr-4 -mt-1 md:-mt-0">
+          <div className="md:block hidden absolute right-0 top-0 md:-mr-0 -mr-4 mt-2">
             <CustomizedSwitches />
           </div>
           <button
@@ -88,16 +88,19 @@ const Header = () => {
         </ul>
 
         <div
-          className={`px-2 absolute right-0 mt-[2px] w-[112px] bg-white dark:bg-black rounded-2xl border-1 overflow-hidden transform transition-all duration-300 origin-top-right text-[10px] ${
+          className={`px-2 absolute right-0 mt-[2px] w-[112px] bg-white dark:bg-black rounded-2xl border-black dark:border-white border overflow-hidden transform transition-all duration-300 origin-top-right text-[10px] ${
             isShowMore ? "scale-100 opacity-100" : "scale-0 opacity-0"
           }`}
         >
           <ul className=" ">
-            <li className="my-2 border-1 p-2 rounded-2xl">
+            <li className="my-2 border-black border dark:border-white p-2 rounded-2xl">
               <Link to="/contact">Contact Us ☎️</Link>
             </li>
-            <li className="my-2 border-1 p-2 rounded-2xl">
+            <li className="my-2 border-black border dark:border-white p-2 rounded-2xl">
               <Link to="/about">About Us 👤</Link>
+            </li>
+            <li className="md:hidden my-2  rounded-2xl flex justify-end">
+              <CustomizedSwitches />
             </li>
           </ul>
         </div>

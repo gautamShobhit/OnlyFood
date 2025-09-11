@@ -10,7 +10,7 @@ class Dev extends React.Component {
     const { name } = this.props;
     //JSX code
     return (
-      <div className="flex font-poppins  justify-center flex-wrap rounded-3xl border-b-1 shadow-2xl dark:shadow-gray-400 p-5 bg-cyan-300 dark:bg-cyan-800">
+      <div className="flex font-poppins  justify-center flex-wrap rounded-3xl border-black dark:border-white border-b shadow-2xl dark:shadow-gray-400 p-5 bg-cyan-300 dark:bg-cyan-800">
         <div className="my-auto dev-img-container overflow-hidden border-0 rounded-full md:w-72 md:h-72 w-36 h-36">
           <img className="md:w-72" src={devImg} alt="dev image"></img>
         </div>

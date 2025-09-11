@@ -10,7 +10,7 @@ const FoodItemList = ({ items }) => {
         <div
           data-testid="foodItems"
           key={item.card.info.id}
-          className="p-2 mx-2 my-4 border-b-1 shadow-lg dark:shadow-gray-400 rounded-lg flex md:justify-between bg-cyan-200 dark:bg-cyan-800 md:text-base text-xs"
+          className="p-2 mx-2 my-4 border-black dark:border-white border-b shadow-lg dark:shadow-gray-400 rounded-lg flex md:justify-between bg-cyan-200 dark:bg-cyan-800 md:text-base text-xs"
         >
           <div className="md:w-10/12 w-3/4 mr-4">
             <span className="font-semibold md:text-lg">

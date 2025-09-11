@@ -1,23 +1,3 @@
-// import * as React from "react";
-// import Switch from "@mui/material/Switch";
-
-// export default function ControlledSwitches() {
-//   const [checked, setChecked] = React.useState(true);
-
-//   const handleChange = (event) => {
-//     setChecked(event.target.checked);
-//   };
-
-//   return (
-//     <Switch
-//       checked={checked}
-//       onChange={handleChange}
-//       slotProps={{ input: { "aria-label": "controlled" } }}
-//     />
-//   );
-// }
-
-import * as React from "react";
 import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -93,7 +73,7 @@ export default function CustomizedSwitches() {
       <FormControlLabel
         control={
           <MaterialUISwitch
-            sx={{ mt: 1 }}
+            sx={{}}
             checked={darkMode} // <-- controlled by Redux
             onChange={handleChange} // <-- updates Redux
           />

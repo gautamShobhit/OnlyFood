@@ -49,7 +49,7 @@ const ResMenu = () => {
     <div className="md:pt-[160px] pt-[90px] my-5 md:mx-[90px]">
       <div className="z-0 md:h-[280px] h-[200px] relative flex justify-center md:mx-[150px] font-poppins  font-bold">
         <img
-          className="-z-5 absolute h-full w-full overflow-hidden object-cover rounded-lg md:shadow-2xl shadow-xl dark:shadow-gray-400 border-b-1"
+          className="-z-5 absolute h-full w-full overflow-hidden object-cover rounded-lg md:shadow-2xl shadow-xl dark:shadow-gray-400 border-black dark:border-white border-b"
           src={CDN_URL + cloudinaryImageId}
           alt="Restaurant Banner"
         />
