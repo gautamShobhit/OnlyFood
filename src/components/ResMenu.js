@@ -4,17 +4,29 @@ import useResMenu from "../utils/useResMenu";
 import FoodCategory from "./FoodCategory";
 import { useState } from "react";
 import { CDN_URL } from "../utils/constants";
+import MOCK_KFC_DATA from "../__mocks__/mockKFCMenu.json";
+import MOCK_MACD_DATA from "../__mocks__/mockMacDMenu.json";
+import MOCK_BURGER_KING_DATA from "../__mocks__/mockBurgerKingMenu.json";
+import MOCK_DOMINOS_DATA from "../__mocks__/mockDominosMenu.json";
 
 const ResMenu = () => {
   const { resId } = useParams();
   //Custom hook which handles other tasks
   //Below, this hook is responsible for getting
   //the data to resMenu for displaying it
-  const resInfo = useResMenu(resId);
+  //const resInfo = useResMenu(resId);
+
+  //Temporary fix to swiggy blocking the API request
+  const [resInfo, setResInfo] = useState(null);
+  if (resId === "472218" && resInfo === null) setResInfo(MOCK_KFC_DATA);
+  if (resId === "253981" && resInfo === null) setResInfo(MOCK_MACD_DATA);
+  if (resId === "438435" && resInfo === null) setResInfo(MOCK_BURGER_KING_DATA);
+  if (resId === "29976" && resInfo === null) setResInfo(MOCK_DOMINOS_DATA);
 
   const [showIndex, setShowIndex] = useState(0);
 
   if (resInfo === null) return <MenuShimmer />;
+
   //Destructuring
   const {
     name,
@@ -24,7 +36,7 @@ const ResMenu = () => {
     areaName,
     sla,
     cloudinaryImageId,
-  } = resInfo?.cards[2]?.card?.card?.info;
+  } = resInfo?.data?.cards[2]?.card?.card?.info;
 
   //Defensive Destructuring
   // const menuCards =
@@ -36,7 +48,7 @@ const ResMenu = () => {
   //Swiggy API changes it's structure with the display size also
   //Hence we need to dynamically fetch relevant data from the API data
 
-  const cards = resInfo?.cards || [];
+  const cards = resInfo?.data?.cards || [];
   const reqCards = cards.find((c) => c?.groupedCard);
   const finalCards = reqCards?.groupedCard?.cardGroupMap?.REGULAR?.cards || [];
   const categories = finalCards.filter(
