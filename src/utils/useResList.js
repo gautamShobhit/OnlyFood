@@ -2,55 +2,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addResItems } from "./resSlice";
 import { API_OPTIONS } from "./constants.js";
-// const useResList = () => {
-//   const dispatch = useDispatch();
-//   //we use redux store to save the resList
-//   const restaurantList = useSelector((store) => store.resList);
-//   const fetchData = async () => {
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(async (position) => {
-//         const lat = position.coords.latitude;
-//         const lng = position.coords.longitude;
-//         const data = await fetch(
-//           //fetch returns a promise
-//           "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=" +
-//             lat +
-//             "&lng=" +
-//             lng +
-//             "&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING",
-//           API_OPTIONS
-//         );
-//         const dataJson = await data.json();
-//         const cards = dataJson?.data?.cards || [];
-
-//         // Look through cards to find the one with restaurants
-//         const restaurantCard = cards.find(
-//           (c) => c?.card?.card?.gridElements?.infoWithStyle?.restaurants
-//         );
-
-//         const restaurants =
-//           restaurantCard?.card?.card?.gridElements?.infoWithStyle
-//             ?.restaurants || [];
-//         dispatch(addResItems(restaurants));
-//       });
-//     } else {
-//       alert(
-//         "Please provide location access so we can find best restaurants near you !!"
-//       );
-//     }
-//   };
-//   useEffect(() => {
-//     if (!restaurantList || restaurantList?.length === 0) {
-//       fetchData();
-//       alert(
-//         "⚠️ This is a personal project built for learning purposes. Data shown is fetched via public endpoints and may break or become unavailable."
-//       );
-//     }
-//   }, []);
-//   return restaurantList;
-// };
-// export default useResList;
-
+import { setLocation } from "./locationSlice.js";
+import { BASE_PROXY_URL } from "./constants.js";
 const useResList = () => {
   const dispatch = useDispatch();
   const restaurantList = useSelector((store) => store.resList);
@@ -69,48 +22,66 @@ const useResList = () => {
     return [];
   };
 
+  // Inside useResList.js
+  // Assuming BASE_PROXY_URL is imported from constants.js (e.g., http://localhost:3001)
+
   const fetchData = async () => {
     if (!navigator.geolocation) {
       alert(
-        "Please provide location access so we can find best restaurants near you !!"
+        "Geolocation is not supported by your browser. Using default location.",
       );
+      fetchRestaurantsFromAPI(28.6180771, 77.2861288); // Default to Delhi
       return;
     }
 
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const lat = position.coords.latitude;
-      const lng = position.coords.longitude;
-
-      const BASE_URL = /Mobi|Android/i.test(navigator.userAgent)
-        ? `https://proxy.cors.sh/https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=${lat}&lng=${lng}&carousel=true&third_party_vendor=1`
-        : `https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&page_type=DESKTOP_WEB_LISTING`;
-
-      try {
-        const res = await fetch(`${BASE_URL}`, {
-          ...API_OPTIONS,
-          headers: {
-            ...API_OPTIONS.headers,
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)", // force desktop response
-          },
-        });
-
-        const dataJson = await res.json();
-
-        // Use robust parser
-        const restaurants = extractRestaurants(dataJson);
-
-        dispatch(addResItems(restaurants));
-      } catch (err) {
-        console.error("Error fetching restaurants:", err);
-      }
-    });
+    navigator.geolocation.getCurrentPosition(
+      // 📌 1. SUCCESS: Phone got the location
+      (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        fetchRestaurantsFromAPI(lat, lng);
+      },
+      // 📌 2. ERROR / TIMEOUT: Phone failed to get location
+      (error) => {
+        console.warn(
+          `Location Error: ${error.message}. Falling back to default location.`,
+        );
+        fetchRestaurantsFromAPI(28.6180771, 77.2861288); // Default to Delhi
+      },
+      // 📌 3. OPTIONS: Tell the phone to try harder
+      {
+        enableHighAccuracy: true, // Forces phone to use GPS, not just cell towers
+        timeout: 10000, // Wait max 10 seconds
+        maximumAge: 0, // Don't use a cached location
+      },
+    );
   };
 
+  // 📌 4. Abstracted the actual API call to avoid repeating code
+  const fetchRestaurantsFromAPI = async (lat, lng) => {
+    // Save to Redux so the Menu can use it later
+    dispatch(setLocation({ lat, lng }));
+
+    try {
+      const fetchUrl = `${BASE_PROXY_URL}/api/restaurants?lat=${lat}&lng=${lng}`;
+      const res = await fetch(fetchUrl);
+
+      if (!res.ok) {
+        throw new Error(`Server returned ${res.status}`);
+      }
+
+      const dataJson = await res.json();
+      const restaurants = extractRestaurants(dataJson);
+      dispatch(addResItems(restaurants));
+    } catch (err) {
+      console.error("Error fetching restaurants:", err.message);
+    }
+  };
   useEffect(() => {
     if (!restaurantList || restaurantList?.length === 0) {
       fetchData();
       alert(
-        "⚠️ This is a personal project built for learning purposes. Data shown is fetched via public endpoints and may break or become unavailable."
+        "⚠️ This is a personal project built for learning purposes. Data shown is fetched via public endpoints and may break or become unavailable.",
       );
     }
   }, []);

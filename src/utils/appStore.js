@@ -3,6 +3,7 @@ import cartReducer from "./cartSlice.js";
 import favReducer from "./favSlice.js";
 import resListReducer from "./resSlice.js";
 import themeReducer from "./themeSlice.js";
+import locationReducer from "./locationSlice";
 
 const appStore = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ const appStore = configureStore({
     favRest: favReducer,
     resList: resListReducer,
     theme: themeReducer,
+    location: locationReducer, // Add the new reducer here
   },
 });
 
